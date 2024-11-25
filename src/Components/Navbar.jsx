@@ -8,9 +8,16 @@ import { GrCart } from "react-icons/gr"
 import { FaComputer } from "react-icons/fa6"
 import { SiYoutubegaming } from "react-icons/si"
 import { BsSmartwatch } from "react-icons/bs"
+import useAuth from "../Hooks/useContext"
 
 const Navbar = () => {
-    const user = 1;
+    const { user, signout } = useAuth()
+    console.log(user)
+
+
+    const logout = () => {
+        signout()
+    }
     return (
         <>
             <div className="flex justify-between items-center px-4 lg:px-36 py-6 md:py-4">
@@ -32,10 +39,23 @@ const Navbar = () => {
 
                 {
                     user ?
-                        <div className="hidden md:flex md:gap-4">
+                        <div className="hidden md:flex items-center md:gap-4">
                             <FaRegHeart size="1.2rem"></FaRegHeart>
                             <GrCart size="1.2rem"></GrCart>
-                            <FiUser size="1.2rem"></FiUser>
+                            <div className="tooltip tooltip-right" data-tip={user.displayName}>
+                                <details className="dropdown dropdown-end">
+                                    <summary className="btn bg-transparent border-none shadow-none p-0 m-0 hover:bg-transparent"><FiUser size="1.2rem"></FiUser></summary>
+                                    <ul className="menu dropdown-content bg-base-100 z-[1] w-52 p-2 shadow space-y-3 rounded-sm">
+                                        <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                            <Link to="/signin">View Profile</Link>
+                                        </button>
+                                        <button onClick={() => logout()} className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                            <Link to="/signin">Signout</Link>
+                                        </button>
+                                    </ul>
+                                </details>
+                            </div>
+
                         </div> :
                         <div className="hidden md:flex space-x-3">
                             <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
@@ -55,15 +75,20 @@ const Navbar = () => {
                     {
                         user ?
 
-                            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
-                                <li className="px-4 pb-3">Welcome to Cyber, Username!</li>
+                            <ul className="menu dropdown-content bg-base-100 rounded-sm z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
+                                <div className="px-4 pb-3">Welcome to Cyber, <span className="font-medium"> {user.displayName}</span>!</div>
                                 <hr />
                                 <li><NavLink to="/" className="text-end">Home</NavLink></li>
                                 <li><NavLink to="/products">Products</NavLink></li>
                                 <li><NavLink to="/about">About</NavLink></li>
                                 <li><NavLink to="/contact">Contact</NavLink></li>
+                                <li>
+                                    <button onClick={() => logout()} className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                        <Link to="/signin">Signout</Link>
+                                    </button>
+                                </li>
                             </ul> :
-                            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
+                            <ul className="menu dropdown-content bg-base-100 rounded-sm z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
                                 <li><NavLink to="/" className="text-end">Home</NavLink></li>
                                 <li><NavLink to="/products">Products</NavLink></li>
                                 <li><NavLink to="/about">About</NavLink></li>
