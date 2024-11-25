@@ -1,11 +1,12 @@
 import { BsSmartwatch } from "react-icons/bs"
 import { FaCamera, FaComputer, FaHeadphones, FaMobile } from "react-icons/fa6"
 import { SiYoutubegaming } from "react-icons/si"
+import SectionHead from "./SectionHead"
 
 const Categories = () => {
     return (
         <div className="py-20 px-4 lg:px-36">
-            <h3 className="text-2xl font-medium mb-8">Browse By Category</h3>
+            <SectionHead title={'Browse By Category'}></SectionHead>
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 justify-between gap-8">
                 <div className="px-12 py-6 bg-[#EDEDED] flex flex-col items-center justify-center gap-2 rounded-2xl text-center">

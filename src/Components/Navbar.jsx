@@ -10,6 +10,7 @@ import { SiYoutubegaming } from "react-icons/si"
 import { BsSmartwatch } from "react-icons/bs"
 
 const Navbar = () => {
+    const user = 1;
     return (
         <>
             <div className="flex justify-between items-center px-4 lg:px-36 py-6 md:py-4">
@@ -29,22 +30,54 @@ const Navbar = () => {
                     <li><NavLink to="/contact" className="opacity-50 hover:opacity-100 transition font-medium">Contact</NavLink></li>
                 </ul>
 
-                <div className="hidden md:flex md:gap-4">
-                    <FaRegHeart size="1.2rem"></FaRegHeart>
-                    <GrCart size="1.2rem"></GrCart>
-                    <FiUser size="1.2rem"></FiUser>
-                </div>
+                {
+                    user ?
+                        <div className="hidden md:flex md:gap-4">
+                            <FaRegHeart size="1.2rem"></FaRegHeart>
+                            <GrCart size="1.2rem"></GrCart>
+                            <FiUser size="1.2rem"></FiUser>
+                        </div> :
+                        <div className="hidden md:flex space-x-3">
+                            <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                <Link to="/signup">Signup</Link>
+                            </button>
+                            <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                <Link to="/signin">Signin</Link>
+                            </button>
+                        </div>
+                }
 
                 <details className="inline-block lg:hidden dropdown dropdown-end">
                     <summary className="btn m-1 bg-transparent border-none shadow-none">
                         <GiHamburgerMenu size="1.7rem"></GiHamburgerMenu>
                     </summary>
-                    <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
-                        <li><NavLink to="/" className="text-end">Home</NavLink></li>
-                        <li><NavLink to="/products">Products</NavLink></li>
-                        <li><NavLink to="/about">About</NavLink></li>
-                        <li><NavLink to="/contact">Contact</NavLink></li>
-                    </ul>
+
+                    {
+                        user ?
+
+                            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
+                                <li className="px-4 pb-3">Welcome to Cyber, Username!</li>
+                                <hr />
+                                <li><NavLink to="/" className="text-end">Home</NavLink></li>
+                                <li><NavLink to="/products">Products</NavLink></li>
+                                <li><NavLink to="/about">About</NavLink></li>
+                                <li><NavLink to="/contact">Contact</NavLink></li>
+                            </ul> :
+                            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
+                                <li><NavLink to="/" className="text-end">Home</NavLink></li>
+                                <li><NavLink to="/products">Products</NavLink></li>
+                                <li><NavLink to="/about">About</NavLink></li>
+                                <li><NavLink to="/contact">Contact</NavLink></li>
+                                <li className="space-y-2">
+                                    <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                        <Link to="/signup">Signup</Link>
+                                    </button>
+                                    <button className="font-medium bg-black text-white px-4 py-1 border-2 border-black hover:bg-transparent hover:text-black transition rounded-sm">
+                                        <Link to="/signin">Signin</Link>
+                                    </button>
+                                </li>
+                            </ul>
+                    }
                 </details>
             </div>
 
@@ -72,7 +105,7 @@ const Navbar = () => {
                 <div className="flex items-center opacity-80 gap-2">
                     <SiYoutubegaming></SiYoutubegaming>
                     <p>Gaming</p>
-                </div>  
+                </div>
             </div>
         </>
     )
