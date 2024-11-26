@@ -31,10 +31,10 @@ const Navbar = () => {
                 </label>
 
                 <ul className="nav-menu hidden lg:flex gap-10">
-                    <li><NavLink to="/" className="opacity-50 hover:opacity-100 transition font-medium">Home</NavLink></li>
-                    <li><NavLink to="/products" className="opacity-50 hover:opacity-100 transition font-medium">Products</NavLink></li>
-                    <li><NavLink to="/about" className="opacity-50 hover:opacity-100 transition font-medium">About</NavLink></li>
-                    <li><NavLink to="/contact" className="opacity-50 hover:opacity-100 transition font-medium">Contact</NavLink></li>
+                    <li><NavLink to="/" className={({isActive}) => isActive? "underline underline-offset-8 opacity-100 transition font-medium" : "opacity-50 hover:opacity-100 transition font-medium"}>Home</NavLink></li>
+                    <li><NavLink to="/products" className={({isActive}) => isActive? "underline underline-offset-8 opacity-100 transition font-medium" : "opacity-50 hover:opacity-100 transition font-medium"}>Products</NavLink></li>
+                    <li><NavLink to="/about" className={({isActive}) => isActive? "underline underline-offset-8 opacity-100 transition font-medium" : "opacity-50 hover:opacity-100 transition font-medium"}>About</NavLink></li>
+                    <li><NavLink to="/contact" className={({isActive}) => isActive? "underline underline-offset-8 opacity-100 transition font-medium" : "opacity-50 hover:opacity-100 transition font-medium"}>Contact</NavLink></li>
                 </ul>
 
                 {
@@ -78,7 +78,7 @@ const Navbar = () => {
                             <ul className="menu dropdown-content bg-base-100 rounded-sm z-[1] w-[94vw] md:w-[96vw] p-2 shadow">
                                 <div className="px-4 pb-3">Welcome to Cyber, <span className="font-medium"> {user.displayName}</span>!</div>
                                 <hr />
-                                <li><NavLink to="/" className="text-end">Home</NavLink></li>
+                                <li><NavLink to="/">Home</NavLink></li>
                                 <li><NavLink to="/products">Products</NavLink></li>
                                 <li><NavLink to="/about">About</NavLink></li>
                                 <li><NavLink to="/contact">Contact</NavLink></li>

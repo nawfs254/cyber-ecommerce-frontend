@@ -5,7 +5,7 @@ import vision from "../assets/featured (4).png"
 
 const Featured = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-1 md:gap-0">
             <div className="bg-white lg:col-span-2 px-5 py-5 md:py-0">
                 <div className="flex flex-col md:flex-row justify-center items-center">
                     <div className="w-full md:w-1/2 md:relative md:h-60 top-0">
