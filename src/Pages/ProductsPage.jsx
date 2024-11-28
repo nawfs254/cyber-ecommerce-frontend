@@ -1,8 +1,23 @@
 import { IoMdArrowDropright } from "react-icons/io"
 import ProductCard from "../Components/ProductCard"
 import { IoFilter } from "react-icons/io5"
+import { useLoaderData } from "react-router"
+import { useState } from "react"
+import Pagination from "../Components/pagination"
 
 const ProductsPage = () => {
+    const products = useLoaderData()
+    
+    const [currentPage, setCurrentPage] = useState(1)
+    const productPerPage = 9
+
+    const lastIndex = currentPage * productPerPage
+    const firstIndex = lastIndex - productPerPage
+
+    const currentProducts = products.slice(firstIndex, lastIndex) 
+
+    console.log(products.length)
+ 
     return (
         <div className="md:flex gap-3 mx-4 lg:mx-36 my-4">
             <div className="hidden lg:block w-full md:w-1/3  border-r-2 border-r-gray-300">
@@ -165,29 +180,16 @@ const ProductsPage = () => {
 
 
 
-                <div className="grid grid-cols-2 md:grid-cols-3  gap-2">
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
-                    <ProductCard></ProductCard>
+                <div className="grid grid-cols-2 lg:grid-cols-3  gap-2">
+                    {
+                        currentProducts.map((product) => {
+                            return <ProductCard key={product.id} allProducts={product}></ProductCard>
+                        })
+                    }
+
+                    <div className="col-span-2 md:col-span-3">
+                        <Pagination totalProducts={products.length} productPerPage={productPerPage} setCurrentPage={setCurrentPage}></Pagination>
+                    </div>
                 </div>
             </div>
         </div>

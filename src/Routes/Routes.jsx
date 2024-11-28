@@ -12,6 +12,17 @@ import Protection from "../Components/Filters/Protection";
 import ScrrenDiag from "../Components/Filters/ScrrenDiag";
 import ScreenTypes from "../Components/Filters/ScreenTypes";
 import BatteryCaps from "../Components/Filters/BatteryCaps";
+import axios from "axios";
+
+const fetchedData = async () => {
+    try {
+        const response = await axios.get('https://dummyjson.com/products/search?q=phone');
+        return response.data.products; // Axios response data is in `data` property
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        return { products: [] }; // Return a fallback object or empty array in case of error
+    }
+}
 
 const router = createBrowserRouter([
     {
@@ -20,11 +31,13 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetchedData()
             },
             {
                 path: "/products",
                 element: <ProductsPage></ProductsPage>,
+                loader: () => fetchedData()
             },
             {
                 path: "/about",
