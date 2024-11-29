@@ -1,4 +1,5 @@
 import { FaRegHeart } from "react-icons/fa6"
+import { Link } from "react-router";
 
 const ProductCard = ({ allProducts = {} }) => {
     const { images = [], title = '', price = '' } = allProducts;
@@ -15,7 +16,9 @@ const ProductCard = ({ allProducts = {} }) => {
             </div>
             <p className="text-sm md:text-base font-medium grow">{title}</p>
             <h4 className="font-semibold text-2xl">${price}</h4>
-            <button className="px-5 md:px-16 py-2 md:py-3 bg-black text-white rounded-lg">Buy Now</button>
+            <button className="px-5 md:px-16 py-2 md:py-3 bg-black text-white rounded-lg">
+                <Link to={`id`}>Buy Now</Link>
+            </button>
         </div>
     );
 };

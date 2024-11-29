@@ -23,3 +23,37 @@
 ::-webkit-scrollbar-button {
   display: none;
 }
+
+
+
+/* carousols */
+
+.thumbs{
+  display: flex;
+  align-items: center;
+  flex-grow: 2;
+  gap: 10px;
+}
+
+.thumbs img{
+  
+}
+
+.slide div img:first-child{
+  display: none;
+}
+
+  /* .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
+
+@media only screen and (max-width: 768px) {
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

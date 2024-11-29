@@ -13,6 +13,7 @@ import ScrrenDiag from "../Components/Filters/ScrrenDiag";
 import ScreenTypes from "../Components/Filters/ScreenTypes";
 import BatteryCaps from "../Components/Filters/BatteryCaps";
 import axios from "axios";
+import ProductDetail from "../Pages/ProductDetail";
 
 const fetchedData = async () => {
     try {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
             {
                 path: "/products",
                 element: <ProductsPage></ProductsPage>,
+                loader: () => fetchedData()
+            },
+            {
+                path: "/products/id",
+                element: <ProductDetail></ProductDetail>,
                 loader: () => fetchedData()
             },
             {
