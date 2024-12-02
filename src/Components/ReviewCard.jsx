@@ -1,7 +1,7 @@
 import ReactStars from "react-rating-stars-component";
 
 const ReviewCard = ({review}) => {
-    console.log(review)
+    // console.log(review)
     const {reviewerName, rating, date, comment} = review
     return (
         <div className="flex flex-col gap-0 bg-gray-100 my-3 p-3 rounded-md">

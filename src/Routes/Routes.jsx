@@ -14,6 +14,7 @@ import ScreenTypes from "../Components/Filters/ScreenTypes";
 import BatteryCaps from "../Components/Filters/BatteryCaps";
 import axios from "axios";
 import ProductDetail from "../Pages/ProductDetail";
+import Cart from "../Pages/Cart";
 
 const fetchedData = async () => {
     try {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
                 loader: () => fetchedData()
             },
             {
-                path: "/products/id",
+                path: "/products/:id",
                 element: <ProductDetail></ProductDetail>,
                 loader: () => fetchedData()
             },
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
                 path: "/signin",
                 element: <Signin></Signin>
             },
+            {
+                path: "/cart",
+                element: <Cart></Cart>
+            }
         ]
     },
     {
